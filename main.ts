@@ -7,6 +7,7 @@ const HUM_STREAM_ID = Number(Deno.env.get("HUM_STREAM_ID") || "2");
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 
 serve(async (req) => {
+  console.log("received POST");
   if (req.method !== "POST") return new Response("Only POST allowed", { status: 405 });
 
   const payload = await req.json();
