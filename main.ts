@@ -77,6 +77,8 @@ serve(async (req) => {
     }
 ];
 
+  console.log(observations);
+
   const res = await fetch(`${FROST_URL}/CreateObservations`, {
     method: "POST",
     headers: {
