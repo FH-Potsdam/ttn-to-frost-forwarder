@@ -44,16 +44,38 @@ serve(async (req) => {
 
   const observations = [
     {
-      result: decoded?.TempC_SHT,
-      phenomenonTime: time,
-      Datastream: { "@iot.id": TEMP_STREAM_ID }
+        "Datastream": {
+            "@iot.id": TEMP_STREAM_ID
+        },
+        "components": [
+            "phenomenonTime",
+            "result"
+        ],
+        "dataArray@iot.count": 1,
+        "dataArray": [
+            [
+                time,
+                decoded?.TempC_SHT
+            ]
+        ]
     },
     {
-      result: decoded?.Hum_SHT,
-      phenomenonTime: time,
-      Datastream: { "@iot.id": HUM_STREAM_ID }
+        "Datastream": {
+            "@iot.id": HUM_STREAM_ID
+        },
+        "components": [
+            "phenomenonTime",
+            "result"
+        ],
+        "dataArray@iot.count": 1,
+        "dataArray": [
+            [
+                time,
+                decoded?.Hum_SHT
+            ]
+        ]
     }
-  ];
+];
 
   const res = await fetch(`${FROST_URL}/CreateObservations`, {
     method: "POST",
