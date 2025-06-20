@@ -88,6 +88,8 @@ serve(async (req) => {
     body: JSON.stringify(observations)
   });
 
+  console.log(res);
+
   if (!res.ok) {
     return new Response("Failed: " + await res.text(), { status: 500 });
   }
