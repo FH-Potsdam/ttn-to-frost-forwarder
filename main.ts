@@ -3,7 +3,7 @@ import { Buffer } from 'node:buffer';
 const FROST_URL = Deno.env.get("FROST_URL")!;
 const FROST_USER = Deno.env.get("FROST_USER")!;
 const FROST_PASS = Deno.env.get("FROST_PASS")!;
-const FROST_AUTH = Buffer.from(`${username}:${password}`).toString('base64');
+const FROST_AUTH = Buffer.from(`${FROST_USER}:${FROST_PASS}`).toString('base64');
 
 const TEMP_STREAM_ID = Number(Deno.env.get("TEMP_STREAM_ID") || "1");
 const HUM_STREAM_ID = Number(Deno.env.get("HUM_STREAM_ID") || "2");
