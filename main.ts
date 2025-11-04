@@ -1,3 +1,5 @@
+import { Buffer } from 'node:buffer';
+
 const FROST_URL = Deno.env.get("FROST_URL")!;
 const FROST_USER = Deno.env.get("FROST_USER")!;
 const FROST_PASS = Deno.env.get("FROST_PASS")!;
