@@ -1,5 +1,7 @@
 const FROST_URL = Deno.env.get("FROST_URL")!;
-const FROST_AUTH = Deno.env.get("FROST_AUTH")!;
+const FROST_USER = Deno.env.get("FROST_USER")!;
+const FROST_PASS = Deno.env.get("FROST_PASS")!;
+const FROST_AUTH = Buffer.from(`${username}:${password}`).toString('base64');
 
 const TEMP_STREAM_ID = Number(Deno.env.get("TEMP_STREAM_ID") || "1");
 const HUM_STREAM_ID = Number(Deno.env.get("HUM_STREAM_ID") || "2");
@@ -82,7 +84,7 @@ serve(async (req) => {
   const res = await fetch(`${FROST_URL}/CreateObservations`, {
     method: "POST",
     headers: {
-      "Authorization": FROST_AUTH,
+      "Authorization": `Basic ${FROST_AUTH}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify(observations)
